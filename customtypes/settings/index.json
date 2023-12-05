@@ -70,6 +70,20 @@
           "label": "GTM_ID",
           "placeholder": ""
         }
+      },
+      "iframe_id": {
+        "type": "Text",
+        "config": {
+          "label": "IFrame ID",
+          "placeholder": ""
+        }
+      },
+      "iframe_title": {
+        "type": "Text",
+        "config": {
+          "label": "IFrame Title",
+          "placeholder": ""
+        }
       }
     }
   }

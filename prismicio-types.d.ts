@@ -531,6 +531,28 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   gtm_id: prismic.KeyTextField;
+
+  /**
+   * IFrame ID field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.iframe_id
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  iframe_id: prismic.KeyTextField;
+
+  /**
+   * IFrame Title field in *Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.iframe_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  iframe_title: prismic.KeyTextField;
 }
 
 /**
@@ -1293,9 +1315,142 @@ export type Section2SliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Section2 → Primary*
+ */
+export interface Section2SlicePointBlocksPrimary {
+  /**
+   * Title field in *Section2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Title Color field in *Section2 → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.title_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  title_color: prismic.ColorField;
+
+  /**
+   * CTA Text field in *Section2 → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.cta_text
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  cta_text: prismic.KeyTextField;
+
+  /**
+   * After CTA Text field in *Section2 → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.after_cta_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  after_cta_text: prismic.RichTextField;
+
+  /**
+   * Background Image field in *Section2 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.background_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  background_image: prismic.ImageField<never>;
+
+  /**
+   * Transition In Image field in *Section2 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.transition_in_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  transition_in_image: prismic.ImageField<never>;
+
+  /**
+   * Transition Out Image field in *Section2 → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.transition_out_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  transition_out_image: prismic.ImageField<never>;
+
+  /**
+   * Key Points Text Color field in *Section2 → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.text_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  text_color: prismic.ColorField;
+
+  /**
+   * Background Of Small Images field in *Section2 → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.background_of_small_images
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  background_of_small_images: prismic.ContentRelationshipField<"background_of_small_images">;
+}
+
+/**
+ * Primary content in *Section2 → Items*
+ */
+export interface Section2SlicePointBlocksItem {
+  /**
+   * heading field in *Section2 → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.items[].heading
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  heading: prismic.RichTextField;
+
+  /**
+   * description field in *Section2 → Items*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.items[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * PointBlocks variation for Section2 Slice
+ *
+ * - **API ID**: `pointBlocks`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type Section2SlicePointBlocks = prismic.SharedSliceVariation<
+  "pointBlocks",
+  Simplify<Section2SlicePointBlocksPrimary>,
+  Simplify<Section2SlicePointBlocksItem>
+>;
+
+/**
  * Slice variation for *Section2*
  */
-type Section2SliceVariation = Section2SliceDefault;
+type Section2SliceVariation = Section2SliceDefault | Section2SlicePointBlocks;
 
 /**
  * Section2 Shared Slice
@@ -1578,8 +1733,11 @@ declare module "@prismicio/client" {
       Section2Slice,
       Section2SliceDefaultPrimary,
       Section2SliceDefaultItem,
+      Section2SlicePointBlocksPrimary,
+      Section2SlicePointBlocksItem,
       Section2SliceVariation,
       Section2SliceDefault,
+      Section2SlicePointBlocks,
       Section3Slice,
       Section3SliceDefaultItem,
       Section3SliceVariation,

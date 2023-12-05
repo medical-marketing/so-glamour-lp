@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { ReactElement } from "react";
 import {
   Modal,
   ModalContent,
@@ -8,9 +8,22 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import clsx from "clsx";
-import { PrismicNextLink, PrismicNextLinkProps } from "@prismicio/next";
 
-export default function CTA({ className, style, children }: any) {
+type CtaProps = {
+  className: string;
+  style: object;
+  children: ReactElement;
+  iframe_id: string;
+  iframe_title: string;
+};
+
+export default function CTA({
+  className,
+  style,
+  children,
+  iframe_id,
+  iframe_title,
+}: CtaProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -31,15 +44,15 @@ export default function CTA({ className, style, children }: any) {
             <>
               <ModalBody style={{ paddingRight: 0, paddingLeft: 0 }}>
                 <iframe
-                  src="https://api.leadconnectorhq.com/widget/survey/THwS7S3F9P2u1yvzslzP"
+                  src={`https://api.leadconnectorhq.com/widget/survey/${iframe_id}`}
                   style={{
                     border: "none",
                     height: "900px",
                   }}
                   scrolling="yes"
-                  id="THwS7S3F9P2u1yvzslzP"
-                  title="Aumento Pecho"
-                  loading="lazy"
+                  id={iframe_id}
+                  title={iframe_title}
+                  loading="eager"
                 ></iframe>
                 <script
                   async={true}
