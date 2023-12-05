@@ -31,13 +31,13 @@ export default function CTA({ className, style, children }: any) {
             <>
               <ModalBody style={{ paddingRight: 0, paddingLeft: 0 }}>
                 <iframe
-                  src="https://api.leadconnectorhq.com/widget/survey/hFTwQPUJXI9obdqaYZT0"
+                  src="https://api.leadconnectorhq.com/widget/survey/THwS7S3F9P2u1yvzslzP"
                   style={{
                     border: "none",
                     height: "900px",
                   }}
                   scrolling="yes"
-                  id="hFTwQPUJXI9obdqaYZT0"
+                  id="THwS7S3F9P2u1yvzslzP"
                   title="Aumento Pecho"
                   loading="lazy"
                 ></iframe>
