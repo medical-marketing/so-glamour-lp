@@ -75,96 +75,193 @@ const Section2 = ({ slice }: Section2Props): JSX.Element => {
   const backgroundOfSmallImagesUID =
     slice.primary.background_of_small_images?.uid;
 
-  return (
-    <div className="relative">
-      <PrismicNextImage
-        className="absolute -z-20 w-full h-full object-cover"
-        field={slice.primary.background_image}
-        loading="lazy"
-      />
-      {backgroundOfSmallImagesUID && (
-        <BackgroundOfSmallImages uid={backgroundOfSmallImagesUID} />
-      )}
-      <Bounded
-        as="section"
-        className="max-w-5xl mx-auto"
-        data-slice-type={slice.slice_type}
-        data-slice-variation={slice.variation}
-      >
-        {Boolean(slice?.primary?.transition_in_image?.url) && (
-          <>
-            <div className="mt-[200px]"></div>
-            <div className="transition-div absolute top-0 left-0 w-full">
-              <PrismicNextImage
-                field={slice.primary.transition_in_image}
-                className="w-full"
-              />
-            </div>
-          </>
+  if (slice.variation == "default") {
+    return (
+      <div className="relative">
+        <PrismicNextImage
+          className="absolute -z-20 w-full h-full object-cover"
+          field={slice.primary.background_image}
+          loading="lazy"
+        />
+        {backgroundOfSmallImagesUID && (
+          <BackgroundOfSmallImages uid={backgroundOfSmallImagesUID} />
         )}
-        <div className="title-div mb-[4rem]">
-          <PrismicRichText
-            field={slice.primary.title}
-            components={components({
-              title_color: slice.primary.title_color,
-              text_color: slice.primary.text_color,
-            })}
-          />
-        </div>
-        {/* repeatable zone elements */}
-        <div className="key-points-div ml-[3rem] sm:ml-[6rem] md:ml-[8rem] mx-[1rem] sm:mx-[2rem] md:mx-[5rem]">
-          {slice.items.map(({ heading, description }, index) => (
-            <div key={"heading-" + index}>
-              <div className="icon-div absolute -translate-x-10 sm:-translate-x-14">
+        <Bounded
+          as="section"
+          className="max-w-5xl mx-auto"
+          data-slice-type={slice.slice_type}
+          data-slice-variation={slice.variation}
+        >
+          {Boolean(slice?.primary?.transition_in_image?.url) && (
+            <>
+              <div className="mt-[200px]"></div>
+              <div className="transition-div absolute top-0 left-0 w-full">
                 <PrismicNextImage
-                  className="max-w-[25px] sm:max-w-[40px]"
-                  field={slice.primary.key_point_icon}
+                  field={slice.primary.transition_in_image}
+                  className="w-full"
                 />
               </div>
-              <PrismicRichText
-                field={heading}
-                components={components({
-                  title_color: slice.primary.title_color,
-                  text_color: slice.primary.text_color,
-                })}
-              />
-              <div className="description-div mb-8">
+            </>
+          )}
+          <div className="title-div mb-[4rem]">
+            <PrismicRichText
+              field={slice.primary.title}
+              components={components({
+                title_color: slice.primary.title_color,
+                text_color: slice.primary.text_color,
+              })}
+            />
+          </div>
+          {/* repeatable zone elements */}
+          <div className="key-points-div ml-[3rem] sm:ml-[6rem] md:ml-[8rem] mx-[1rem] sm:mx-[2rem] md:mx-[5rem]">
+            {slice.items.map(({ heading, description }, index) => (
+              <div key={"heading-" + index}>
+                <div className="icon-div absolute -translate-x-10 sm:-translate-x-14">
+                  <PrismicNextImage
+                    className="max-w-[25px] sm:max-w-[40px]"
+                    field={slice.primary.key_point_icon}
+                  />
+                </div>
                 <PrismicRichText
-                  key={"description" + index}
-                  field={description}
+                  field={heading}
                   components={components({
                     title_color: slice.primary.title_color,
                     text_color: slice.primary.text_color,
                   })}
                 />
+                <div className="description-div mb-8">
+                  <PrismicRichText
+                    key={"description" + index}
+                    field={description}
+                    components={components({
+                      title_color: slice.primary.title_color,
+                      text_color: slice.primary.text_color,
+                    })}
+                  />
+                </div>
               </div>
-            </div>
-          ))}
-          <div className="w-full pr-[1rem] xs:pr-[2rem] sm:pr-[4rem] md:[3rem]">
-            {slice.primary.cta_text?.length && (
-              <Button>{slice.primary.cta_text}</Button>
-            )}
-            <AfterCtaText
-              field={slice.primary.after_cta_text}
-              color={slice.primary.text_color}
-            />
-          </div>
-        </div>
-
-        {Boolean(slice?.primary?.transition_out_image?.url) && (
-          <>
-            <div className="mt-[200px]"></div>
-            <div className="transition-div absolute bottom-0 left-0 w-full">
-              <PrismicNextImage
-                field={slice.primary.transition_out_image}
-                className="w-full"
+            ))}
+            <div className="w-full pr-[1rem] xs:pr-[2rem] sm:pr-[4rem] md:[3rem]">
+              {slice.primary.cta_text?.length && (
+                <Button iframe={slice.primary.iframe}>
+                  {slice.primary.cta_text}
+                </Button>
+              )}
+              <AfterCtaText
+                field={slice.primary.after_cta_text}
+                color={slice.primary.text_color}
               />
             </div>
-          </>
+          </div>
+
+          {Boolean(slice?.primary?.transition_out_image?.url) && (
+            <>
+              <div className="mt-[200px]"></div>
+              <div className="transition-div absolute bottom-0 left-0 w-full">
+                <PrismicNextImage
+                  field={slice.primary.transition_out_image}
+                  className="w-full"
+                />
+              </div>
+            </>
+          )}
+        </Bounded>
+      </div>
+    );
+  } else if (slice.variation == "pointBlocks") {
+    return (
+      <div className="relative">
+        <PrismicNextImage
+          className="absolute -z-20 w-full h-full object-cover"
+          field={slice.primary.background_image}
+          loading="lazy"
+        />
+        {backgroundOfSmallImagesUID && (
+          <BackgroundOfSmallImages uid={backgroundOfSmallImagesUID} />
         )}
-      </Bounded>
-    </div>
-  );
+        <Bounded
+          as="section"
+          className="max-w-5xl mx-auto"
+          data-slice-type={slice.slice_type}
+          data-slice-variation={slice.variation}
+        >
+          {Boolean(slice?.primary?.transition_in_image?.url) && (
+            <>
+              <div className="mt-[200px]"></div>
+              <div className="transition-div absolute top-0 left-0 w-full">
+                <PrismicNextImage
+                  field={slice.primary.transition_in_image}
+                  className="w-full"
+                />
+              </div>
+            </>
+          )}
+          <div className="title-div mb-[4rem]">
+            <PrismicRichText
+              field={slice.primary.title}
+              components={components({
+                title_color: slice.primary.title_color,
+                text_color: slice.primary.text_color,
+              })}
+            />
+          </div>
+          {/* repeatable zone elements */}
+          <div className="key-points-div ml-[3rem] sm:ml-[6rem] md:ml-[8rem] mx-[1rem] sm:mx-[2rem] md:mx-[5rem]">
+            {slice.items.map(({ heading, description }, index) => (
+              <div key={"heading-" + index}>
+                <div className="icon-div absolute -translate-x-10 sm:-translate-x-14">
+                  {/* <PrismicNextImage
+                    className="max-w-[25px] sm:max-w-[40px]"
+                    field={slice.primary.key_point_icon}
+                  /> */}
+                </div>
+                <PrismicRichText
+                  field={heading}
+                  components={components({
+                    title_color: slice.primary.title_color,
+                    text_color: slice.primary.text_color,
+                  })}
+                />
+                <div className="description-div mb-8">
+                  <PrismicRichText
+                    key={"description" + index}
+                    field={description}
+                    components={components({
+                      title_color: slice.primary.title_color,
+                      text_color: slice.primary.text_color,
+                    })}
+                  />
+                </div>
+              </div>
+            ))}
+            <div className="w-full pr-[1rem] xs:pr-[2rem] sm:pr-[4rem] md:[3rem]">
+              {slice.primary.cta_text?.length && (
+                <Button iframe={slice.primary.iframe}>
+                  {slice.primary.cta_text}
+                </Button>
+              )}
+              <AfterCtaText
+                field={slice.primary.after_cta_text}
+                color={slice.primary.text_color}
+              />
+            </div>
+          </div>
+
+          {Boolean(slice?.primary?.transition_out_image?.url) && (
+            <>
+              <div className="mt-[200px]"></div>
+              <div className="transition-div absolute bottom-0 left-0 w-full">
+                <PrismicNextImage
+                  field={slice.primary.transition_out_image}
+                  className="w-full"
+                />
+              </div>
+            </>
+          )}
+        </Bounded>
+      </div>
+    );
+  }
 };
 
 export default Section2;

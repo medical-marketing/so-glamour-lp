@@ -71,18 +71,12 @@
           "placeholder": ""
         }
       },
-      "iframe_id": {
-        "type": "Text",
+      "default_iframe": {
+        "type": "Link",
         "config": {
-          "label": "IFrame ID",
-          "placeholder": ""
-        }
-      },
-      "iframe_title": {
-        "type": "Text",
-        "config": {
-          "label": "IFrame Title",
-          "placeholder": ""
+          "label": "default iFrame",
+          "select": "document",
+          "customtypes": ["iframe"]
         }
       }
     }

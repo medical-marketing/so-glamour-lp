@@ -72,7 +72,7 @@ export default async function RootLayout({
           <TrackingHeadScript id={GTM_ID || ""} isGTM={true} />
           <Header />
           {children}
-          {/* <Footer /> */}
+          <Footer />
         </Providers>
         <PrismicPreview repositoryName={repositoryName} />
       </body>

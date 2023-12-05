@@ -42,6 +42,16 @@
             "placeholder": ""
           }
         },
+        "iframe": {
+          "type": "Link",
+          "config": {
+            "label": "iFrame",
+            "select": "document",
+            "customtypes": [
+              "iframe"
+            ]
+          }
+        },
         "after_cta_text": {
           "type": "StructuredText",
           "config": {

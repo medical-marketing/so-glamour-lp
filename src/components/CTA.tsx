@@ -13,17 +13,10 @@ type CtaProps = {
   className: string;
   style: object;
   children: ReactElement;
-  iframe_id: string;
-  iframe_title: string;
+  iframe: ReactElement;
 };
 
-export default function CTA({
-  className,
-  style,
-  children,
-  iframe_id,
-  iframe_title,
-}: CtaProps) {
+export default function CTA({ className, style, children, iframe }: CtaProps) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -43,7 +36,7 @@ export default function CTA({
           {(onClose) => (
             <>
               <ModalBody style={{ paddingRight: 0, paddingLeft: 0 }}>
-                <iframe
+                {/* <iframe
                   src={`https://api.leadconnectorhq.com/widget/survey/${iframe_id}`}
                   style={{
                     border: "none",
@@ -57,7 +50,8 @@ export default function CTA({
                 <script
                   async={true}
                   src="https://link.msgsndr.com/js/form_embed.js"
-                ></script>
+                ></script> */}
+                {iframe}
               </ModalBody>
             </>
           )}

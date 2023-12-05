@@ -4,7 +4,6 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
-import Footer from "@/components/Footer";
 
 type Params = { uid: string };
 
@@ -14,12 +13,7 @@ export default async function Page({ params }: { params: Params }) {
     .getByUID("landing_page", params.uid)
     .catch(() => notFound());
 
-  return (
-    <>
-      <SliceZone slices={page.data.slices} components={components} />
-      <Footer></Footer>
-    </>
-  );
+  return <SliceZone slices={page.data.slices} components={components} />;
 }
 
 export async function generateMetadata({
