@@ -1,4 +1,5 @@
 import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 
 /**
@@ -12,15 +13,30 @@ export type SmallBackgroundImageProps =
  */
 const SmallBackgroundImage = ({
   slice,
+  slices,
 }: SmallBackgroundImageProps): JSX.Element => {
   return (
-    <section
-      data-slice-type={slice.slice_type}
-      data-slice-variation={slice.variation}
+    // <section
+    //   data-slice-type={slice.slice_type}
+    //   data-slice-variation={slice.variation}
+    // >
+    //   Placeholder component for small_background_image (variation:{" "}
+    //   {slice.variation}) Slices
+    // </section>
+    <div
+      className="max-w-[100px] absolute -z-10"
+      style={{
+        top: slice.primary.top + "px",
+        right: slice.primary.right + "px",
+        bottom: slice.primary.bottom + "px",
+        left: slice.primary.left + "px",
+      }}
     >
-      Placeholder component for small_background_image (variation:{" "}
-      {slice.variation}) Slices
-    </section>
+      <PrismicNextImage
+        loading="eager"
+        field={slice.primary.small_background_image}
+      />
+    </div>
   );
 };
 

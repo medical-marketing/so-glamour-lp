@@ -1,5 +1,5 @@
 import { createClient } from "@/prismicio";
-import { PrismicNextImage } from "@prismicio/next";
+import SmallBackgroundImage from "@/slices/SmallBackgroundImage";
 
 const BackgroundOfSmallImages = async ({ uid }: any) => {
   const client = createClient();
@@ -11,21 +11,28 @@ const BackgroundOfSmallImages = async ({ uid }: any) => {
   return (
     <div>
       {backgroundOfSmallImages.data.slices.map((slice, i) => (
-        <div
+        // <div
+        //   key={"small-image-" + i}
+        //   className="max-w-[100px] absolute -z-10"
+        //   style={{
+        //     top: slice.primary.top + "px",
+        //     right: slice.primary.right + "px",
+        //     bottom: slice.primary.bottom + "px",
+        //     left: slice.primary.left + "px",
+        //   }}
+        // >
+        //   <PrismicNextImage
+        //     loading="eager"
+        //     field={slice.primary.small_background_image}
+        //   />
+        // </div>
+        <SmallBackgroundImage
+          context={null}
+          index={i}
+          slices={backgroundOfSmallImages.data.slices}
           key={"small-image-" + i}
-          className="max-w-[100px] absolute -z-10"
-          style={{
-            top: slice.primary.top + "px",
-            right: slice.primary.right + "px",
-            bottom: slice.primary.bottom + "px",
-            left: slice.primary.left + "px",
-          }}
-        >
-          <PrismicNextImage
-            loading="eager"
-            field={slice.primary.small_background_image}
-          />
-        </div>
+          slice={slice}
+        />
       ))}
     </div>
   );
