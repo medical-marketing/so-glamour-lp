@@ -4,6 +4,7 @@ import Bounded from "@/components/Bounded";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
 import Paragraph from "@/components/Paragraph";
+import VideoPopup from "@/components/VideoPopup";
 import { createClient } from "@/prismicio";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
@@ -85,6 +86,7 @@ const Section3 = async ({ slice }: Section3Props): Promise<JSX.Element> => {
             title,
             text,
             image,
+            video_embed_iframe,
             keep_image_right,
             background_image,
             cta_text,
@@ -161,7 +163,21 @@ const Section3 = async ({ slice }: Section3Props): Promise<JSX.Element> => {
                 </div>
                 <div className="flex-1 min-w-[22rem]">
                   <div className="w-full h-full px-0 mobile:px-10 pt-5 flex items-center justify-evenly">
-                    <PrismicNextImage field={image} />
+                    {video_embed_iframe?.length ? (
+                      <VideoPopup
+                        iframe={
+                          <div
+                            className="w-full h-full"
+                            dangerouslySetInnerHTML={{
+                              __html: video_embed_iframe,
+                            }}
+                          ></div>
+                        }
+                        image={<PrismicNextImage field={image} />}
+                      />
+                    ) : (
+                      <PrismicNextImage field={image} />
+                    )}
                   </div>
                 </div>
               </div>

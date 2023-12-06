@@ -79,6 +79,13 @@
             "thumbnails": []
           }
         },
+        "video_embed_iframe": {
+          "type": "Text",
+          "config": {
+            "label": "Video Embed iFrame",
+            "placeholder": ""
+          }
+        },
         "keep_image_right": {
           "type": "Boolean",
           "config": {

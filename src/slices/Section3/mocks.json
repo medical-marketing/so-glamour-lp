@@ -157,6 +157,14 @@
 								"id": "mock_document_id"
 							}
 						}
+					],
+					[
+						"video_embed_iframe",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "addition",
+							"type": "Text"
+						}
 					]
 				]
 			},
@@ -313,6 +321,14 @@
 								"__TYPE__": "DocumentLink",
 								"id": "mock_document_id"
 							}
+						}
+					],
+					[
+						"video_embed_iframe",
+						{
+							"__TYPE__": "FieldContent",
+							"value": "village",
+							"type": "Text"
 						}
 					]
 				]

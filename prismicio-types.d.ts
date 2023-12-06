@@ -1609,6 +1609,16 @@ export interface Section3SliceDefaultItem {
   image: prismic.ImageField<never>;
 
   /**
+   * Video Embed iFrame field in *Section3 → Items*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section3.items[].video_embed_iframe
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  video_embed_iframe: prismic.KeyTextField;
+
+  /**
    * Keep Image Right field in *Section3 → Items*
    *
    * - **Field Type**: Boolean
