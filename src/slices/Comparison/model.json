@@ -35,13 +35,6 @@
             "placeholder": ""
           }
         },
-        "cta_text_color": {
-          "type": "Color",
-          "config": {
-            "label": "CTA Text Color",
-            "placeholder": ""
-          }
-        },
         "iframe": {
           "type": "Link",
           "config": {
@@ -80,7 +73,10 @@
           "type": "Link",
           "config": {
             "label": "Background Of Small Images",
-            "select": "document"
+            "select": "document",
+            "customtypes": [
+              "background_of_small_images"
+            ]
           }
         }
       },

@@ -279,6 +279,7 @@ export type HeaderDocument<Lang extends string = string> =
   >;
 
 type HomepageDocumentDataSlicesSlice =
+  | ComparisonSlice
   | ReviewsSlice
   | Section3Slice
   | Section2Slice
@@ -388,6 +389,7 @@ export type IframeDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<IframeDocumentData>, "iframe", Lang>;
 
 type LandingPageDocumentDataSlicesSlice =
+  | ComparisonSlice
   | Section2Slice
   | Section3Slice
   | Section1Slice
@@ -632,16 +634,6 @@ export interface ComparisonSliceDefaultPrimary {
   cta_text: prismic.KeyTextField;
 
   /**
-   * CTA Text Color field in *Comparison → Primary*
-   *
-   * - **Field Type**: Color
-   * - **Placeholder**: *None*
-   * - **API ID Path**: comparison.primary.cta_text_color
-   * - **Documentation**: https://prismic.io/docs/field#color
-   */
-  cta_text_color: prismic.ColorField;
-
-  /**
    * iFrame field in *Comparison → Primary*
    *
    * - **Field Type**: Content Relationship
@@ -689,7 +681,7 @@ export interface ComparisonSliceDefaultPrimary {
    * - **API ID Path**: comparison.primary.background_of_small_images
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
-  background_of_small_images: prismic.ContentRelationshipField;
+  background_of_small_images: prismic.ContentRelationshipField<"background_of_small_images">;
 }
 
 /**

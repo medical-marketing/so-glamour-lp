@@ -24,11 +24,6 @@
 				"value": "chemical",
 				"type": "Text"
 			},
-			"cta_text_color": {
-				"__TYPE__": "FieldContent",
-				"value": "#c1fb0e",
-				"type": "Color"
-			},
 			"after_cta_text": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [

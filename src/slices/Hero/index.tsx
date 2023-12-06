@@ -75,8 +75,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  * Component for "Hero" Slices.
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
-  // @ts-ignore
   const backgroundOfSmallImagesUID =
+    //@ts-ignore
     slice.primary.background_of_small_images?.uid;
 
   // let BackgroundOfImages;
