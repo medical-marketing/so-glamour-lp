@@ -578,6 +578,16 @@
 					"__TYPE__": "DocumentLink",
 					"id": "mock_document_id"
 				}
+			},
+			"key_point_background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#b085fd",
+				"type": "Color"
+			},
+			"index_number_background_color": {
+				"__TYPE__": "FieldContent",
+				"value": "#6704da",
+				"type": "Color"
 			}
 		},
 		"items": [

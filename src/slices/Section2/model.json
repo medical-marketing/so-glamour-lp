@@ -221,6 +221,20 @@
             "placeholder": ""
           }
         },
+        "index_number_background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Index Number Background Color",
+            "placeholder": ""
+          }
+        },
+        "key_point_background_color": {
+          "type": "Color",
+          "config": {
+            "label": "Key Point Background Color",
+            "placeholder": ""
+          }
+        },
         "background_of_small_images": {
           "type": "Link",
           "config": {

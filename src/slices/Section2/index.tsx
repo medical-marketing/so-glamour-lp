@@ -206,35 +206,56 @@ const Section2 = ({ slice }: Section2Props): JSX.Element => {
             />
           </div>
           {/* repeatable zone elements */}
-          <div className="key-points-div ml-[3rem] sm:ml-[6rem] md:ml-[8rem] mx-[1rem] sm:mx-[2rem] md:mx-[5rem]">
+          <div className="key-points-div mx-[1rem] sm:mx-[2rem] md:mx-[5rem]">
             {slice.items.map(({ heading, description }, index) => (
-              <div key={"heading-" + index}>
-                <div className="icon-div absolute -translate-x-10 sm:-translate-x-14">
-                  {/* <PrismicNextImage
-                    className="max-w-[25px] sm:max-w-[40px]"
-                    field={slice.primary.key_point_icon}
-                  /> */}
+              <div
+                key={"heading-" + index}
+                style={{
+                  background:
+                    slice.primary.key_point_background_color ||
+                    "rgba(31, 41, 55, 0.8)",
+                }}
+                className="bg-gray-800/80 flex flex-wrap mobile:flex-nowrap gap-y-4 rounded-xl my-10 pt-5"
+              >
+                <div
+                  style={{ width: "50px" }}
+                  className="mx-auto -translate-x-4 mobile:translate-x-0"
+                >
+                  <div className="icon-div block">
+                    <div
+                      style={{
+                        background:
+                          slice.primary.index_number_background_color ||
+                          "rgba(55, 65, 81, 0.8)",
+                      }}
+                      className="max-w-[25px] sm:max-w-[40px] text-3xl md:text-5xl pr-[45px] md:pr-[63px] p-3 mt-1 ml-4 rounded-xl text-white"
+                    >
+                      <strong>{String(index + 1).padStart(2, "0")}</strong>
+                    </div>
+                  </div>
                 </div>
-                <PrismicRichText
-                  field={heading}
-                  components={components({
-                    title_color: slice.primary.title_color,
-                    text_color: slice.primary.text_color,
-                  })}
-                />
-                <div className="description-div mb-8">
+                <div className="block ml-[40px] md:ml-[56px] pr-5">
                   <PrismicRichText
-                    key={"description" + index}
-                    field={description}
+                    field={heading}
                     components={components({
                       title_color: slice.primary.title_color,
                       text_color: slice.primary.text_color,
                     })}
                   />
+                  <div className="description-div mb-8">
+                    <PrismicRichText
+                      key={"description" + index}
+                      field={description}
+                      components={components({
+                        title_color: slice.primary.title_color,
+                        text_color: slice.primary.text_color,
+                      })}
+                    />
+                  </div>
                 </div>
               </div>
             ))}
-            <div className="w-full pr-[1rem] xs:pr-[2rem] sm:pr-[4rem] md:[3rem]">
+            <div className="w-full max-w-xl mx-auto md:[3rem]">
               {slice.primary.cta_text?.length && (
                 <Button iframe={slice.primary.iframe}>
                   {slice.primary.cta_text}

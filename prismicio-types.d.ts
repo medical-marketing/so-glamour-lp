@@ -1459,6 +1459,26 @@ export interface Section2SlicePointBlocksPrimary {
   text_color: prismic.ColorField;
 
   /**
+   * Index Number Background Color field in *Section2 → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.index_number_background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  index_number_background_color: prismic.ColorField;
+
+  /**
+   * Key Point Background Color field in *Section2 → Primary*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: section2.primary.key_point_background_color
+   * - **Documentation**: https://prismic.io/docs/field#color
+   */
+  key_point_background_color: prismic.ColorField;
+
+  /**
    * Background Of Small Images field in *Section2 → Primary*
    *
    * - **Field Type**: Content Relationship
